@@ -1,11 +1,16 @@
 import React from "react";
-
 import Drawer from "@material-ui/core/Drawer";
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 
-import { ListItem } from "../ListItem";
+import { ListItem, VirtualListItem } from "../ListItems";
+
+/**
+  List is wrapped in container with 
+  persistant drawer to check list rerendering speed
+  meterialUi used here and everywhere to make components 'heavier'
+ */
 
 const drawerWidth = 240;
 
@@ -78,7 +83,11 @@ export const ListWrapper = ({ List, listSize }) => {
           Drawer
         </Drawer>
         <Box className={`${classes.content} ${open && classes.contentShift}`}>
-          <List ListItem={ListItem} list={templateList} />
+          <List
+            ListItem={ListItem}
+            VirtualListItem={VirtualListItem}
+            list={templateList}
+          />
         </Box>
       </div>
     </Box>
